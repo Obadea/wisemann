@@ -1,12 +1,16 @@
-@import "tailwindcss";
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap");
 
-@config "../tailwind.config.js";
+@import "tailwindcss";
 
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @import "./themes.css";
+
+@theme {
+  --font-sans: "Satoshi", sans-serif;
+}
 
 :root {
   --radius: 0.625rem;
