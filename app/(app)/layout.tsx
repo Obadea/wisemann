@@ -1,6 +1,7 @@
 // import { cookies } from "next/headers"
 
 import CustomButton from "@/components/custom-button"
+import Footer from "@/components/footer"
 import Logo from "@/components/logo"
 import NavmenuItems from "@/components/nav-menu-items"
 
@@ -19,7 +20,8 @@ export default async function AppLayout({
         <CustomButton text="Join Waitlist" className="rounded-full" />
       </header>
       <div className="w-full border-b" />
-      <main className="overflow-x-hidden">{children}</main>
+      <main className="relative overflow-x-hidden">{children}</main>
+      <Footer />
     </div>
   )
 }

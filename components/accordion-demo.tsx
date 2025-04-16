@@ -5,67 +5,91 @@ import {
   AccordionTrigger,
 } from "@/registry/new-york-v4/ui/accordion"
 
-export function AccordionDemo() {
+const faqs = [
+  {
+    question: "What is included in the free plan?",
+    answer:
+      "The free plan includes up to 3 projects, basic collaboration tools, and access to community templates.",
+  },
+  {
+    question: "Can I upgrade or downgrade my plan at any time?",
+    answer:
+      "Yes, you can change your plan at any time from your account settings. Changes take effect immediately.",
+  },
+  {
+    question: "Do you offer refunds?",
+    answer:
+      "We do not offer refunds, but you can cancel your subscription at any time and retain access until the end of the billing cycle.",
+  },
+  {
+    question: "Do you offer support?",
+    answer:
+      "Yes, we offer email support for all users. Pro users get priority support with faster response times.",
+  },
+]
+const faqs2 = [
+  {
+    question: "Can I upgrade or downgrade my plan at any time?",
+    answer:
+      "Yes, you can change your plan at any time from your account settings. Changes take effect immediately.",
+  },
+  {
+    question: "What is included in the free plan?",
+    answer:
+      "The free plan includes up to 3 projects, basic collaboration tools, and access to community templates.",
+  },
+  {
+    question: "Do you offer support?",
+    answer:
+      "Yes, we offer email support for all users. Pro users get priority support with faster response times.",
+  },
+  {
+    question: "Do you offer refunds?",
+    answer:
+      "We do not offer refunds, but you can cancel your subscription at any time and retain access until the end of the billing cycle.",
+  },
+]
+
+export default function AccordionDemo() {
   return (
-    <div className="grid w-full max-w-xl gap-4">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it styled?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It comes with default styles that matches the other
-            components&apos; aesthetic.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Is it animated?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
-          </AccordionContent>
-        </AccordionItem>
+    <div className="grid max-w-5xl grid-cols-2 gap-4">
+      <Accordion
+        type="single"
+        collapsible
+        className="flex w-full flex-col gap-4"
+      >
+        {faqs.map((item, idx) => (
+          <AccordionItem
+            key={`item-${idx}`}
+            value={`item-${idx}`}
+            className="w-full max-w-5xl rounded-lg border-b-0 bg-[#0E1330] px-4"
+          >
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionContent className="max-w-5xl text-[#8F9BB7]">
+              {item.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>
-            What are the key considerations when implementing a comprehensive
-            enterprise-level authentication system?
-          </AccordionTrigger>
-          <AccordionContent>
-            Implementing a robust enterprise authentication system requires
-            careful consideration of multiple factors. This includes secure
-            password hashing and storage, multi-factor authentication (MFA)
-            implementation, session management, OAuth2 and SSO integration,
-            regular security audits, rate limiting to prevent brute force
-            attacks, and maintaining detailed audit logs. Additionally,
-            you&apos;ll need to consider scalability, performance impact, and
-            compliance with relevant data protection regulations such as GDPR or
-            HIPAA.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>
-            How does modern distributed system architecture handle eventual
-            consistency and data synchronization across multiple regions?
-          </AccordionTrigger>
-          <AccordionContent>
-            Modern distributed systems employ various strategies to maintain
-            data consistency across regions. This often involves using
-            techniques like CRDT (Conflict-Free Replicated Data Types), vector
-            clocks, and gossip protocols. Systems might implement event sourcing
-            patterns, utilize message queues for asynchronous updates, and
-            employ sophisticated conflict resolution strategies. Popular
-            solutions like Amazon&apos;s DynamoDB and Google&apos;s Spanner
-            demonstrate different approaches to solving these challenges,
-            balancing between consistency, availability, and partition tolerance
-            as described in the CAP theorem.
-          </AccordionContent>
-        </AccordionItem>
+      <Accordion
+        type="single"
+        collapsible
+        className="flex w-full flex-col gap-4"
+      >
+        {faqs2.map((item, idx) => (
+          <AccordionItem
+            key={`item-${idx + 4}`}
+            value={`item-${idx}`}
+            className="w-full max-w-5xl rounded-lg border-b-0 bg-[#0E1330] px-4"
+          >
+            <AccordionTrigger className="w-5xl">
+              {item.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-[#8F9BB7]">
+              {item.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
     </div>
   )

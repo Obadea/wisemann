@@ -8,3 +8,15 @@ export function cn(...inputs: ClassValue[]) {
 export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
+
+export function formatToNaira(amount: number): string {
+  if (amount === 0) return "Free"
+
+  return (
+    "₦" +
+    amount.toLocaleString("en-NG", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+  )
+}

@@ -5,8 +5,10 @@ import Image from "next/image"
 import { animate, stagger } from "motion"
 import * as motion from "motion/react-client"
 
+import AccordionDemo from "@/components/accordion-demo"
 import CustomButton from "@/components/custom-button"
 import FeatureCard from "@/components/features-card"
+import PriceCard from "@/components/price-card"
 import { Input } from "@/registry/new-york-v4/ui/input"
 
 type Feature = {
@@ -14,6 +16,35 @@ type Feature = {
   description: string
   icon: string // Representing icon name or path if available
 }
+
+const freePlanFeatures = [
+  "Create up to 3 projects",
+  "Advanced analytics & reporting",
+  "Cloud backups and sync",
+  "Custom branding options",
+  "Priority customer support",
+]
+
+const proPlanFeatures = [
+  "Unlimited project creation",
+  "Team management tools",
+  "Advanced analytics & reporting",
+  "Cloud backups and sync",
+  "Custom branding options",
+  "API access",
+  "Early access to new features",
+]
+const proPlanFeatures2 = [
+  "Unlimited project creation",
+  "Real-time collaboration",
+  "Priority customer support",
+  "Access to premium templates",
+  "Team management tools",
+  "Advanced analytics & reporting",
+  "Cloud backups and sync",
+  "API access",
+  "Early access to new features",
+]
 
 const features: Feature[] = [
   {
@@ -82,7 +113,7 @@ export default function SinkPage() {
     <div className="mx-auto h-full w-full max-w-[1400px] gap-4 overflow-x-hidden bg-[#060B27] p-4 text-white">
       <div className="absolute top-[110px] -left-[270px] z-[2] h-[600px] w-[600px] rounded-full bg-radial from-[#7214ff38] via-[#060B27]/0 to-[#060B27]"></div>
 
-      <div className="absolute top-[240px] -right-[400px] z-[1] h-[800px] w-[800px] overflow-hidden rounded-full bg-radial from-[#32CAFD]/25 via-[#060B27]/0 to-[#060B27]"></div>
+      <div className="absolute top-[240px] -right-[400px] -z-[0] h-[800px] w-[800px] overflow-hidden rounded-full bg-radial from-[#32CAFD]/25 via-[#060B27]/0 to-[#060B27]"></div>
 
       <div
         className="invisible flex flex-col items-center gap-10 pt-9"
@@ -160,7 +191,16 @@ export default function SinkPage() {
       </section>
 
       {/* Join Waitlist section */}
-      <section className="flex items-center justify-center py-16">
+      <motion.section
+        className="flex flex-col items-center justify-center py-16"
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.2,
+          scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+        }}
+      >
         <div className="flex w-full max-w-3xl flex-col gap-5 rounded-xl border bg-[#0E1330] p-5">
           <p className="text-xl font-semibold">Join our waitlist</p>
           <Input
@@ -170,7 +210,115 @@ export default function SinkPage() {
           />
           <CustomButton text="Join Waitlist" className="w-full" />
         </div>
-      </section>
+      </motion.section>
+
+      <motion.section
+        className="flex flex-col items-center justify-center gap-12 py-16"
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.2,
+          scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+        }}
+      >
+        <div className="flex flex-col items-center justify-center gap-4">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+            }}
+            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-3xl font-bold text-transparent"
+          >
+            Choose the ideal plan
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.2,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+            }}
+            className="max-w-2xl text-center text-sm text-[#8F9BB7]"
+          >
+            choose the idel plan Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. At quasi Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quasi, placeat excepturi
+          </motion.p>
+        </div>
+
+        {/* Price  section  */}
+
+        <div className="grid grid-cols-3 gap-6 lg:w-6xl">
+          <PriceCard
+            type="open source"
+            price={0}
+            pricingFeatures={freePlanFeatures}
+            priceDescription="Built for the community."
+            btnText="Coming soon"
+          />
+          <PriceCard
+            type="advance"
+            price={70000}
+            pricingFeatures={proPlanFeatures}
+            priceDescription="Lorem Isepum ui dui lor ifsi if jossd"
+            btnText="Coming soon"
+          />
+          <PriceCard
+            type="popular"
+            price={90000}
+            pricingFeatures={proPlanFeatures2}
+            priceDescription="Lorem Isepum ui dui lor ifsi if jossd, enjoy more feaures"
+            btnText="Coming soon"
+          />
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="flex flex-col items-center justify-center gap-12 py-16"
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.2,
+          scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+        }}
+      >
+        <div className="flex flex-col items-center justify-center gap-4">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+            }}
+            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-3xl font-bold text-transparent"
+          >
+            Frequently Asked Questions
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.2,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+            }}
+            className="max-w-2xl text-center text-sm text-[#8F9BB7]"
+          >
+            Frequently asked Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. At quasi Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Quasi, placeat excepturi
+          </motion.p>
+        </div>
+
+        <div>
+          <AccordionDemo />
+        </div>
+      </motion.section>
     </div>
   )
 }
