@@ -1,13 +1,8 @@
 import { cookies } from "next/headers"
 
-import { AppSidebar } from "@/components/app-sidebar"
 import CustomButton from "@/components/custom-button"
 import Logo from "@/components/logo"
 import NavmenuItems from "@/components/nav-menu-items"
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/registry/new-york-v4/ui/sidebar"
 
 export default async function AppLayout({
   children,
@@ -15,7 +10,6 @@ export default async function AppLayout({
   children: React.ReactNode
 }>) {
   const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
     <div className="flex w-full flex-col bg-[#060B27]">
