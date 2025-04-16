@@ -1,4 +1,4 @@
-import { cookies } from "next/headers"
+// import { cookies } from "next/headers"
 
 import CustomButton from "@/components/custom-button"
 import Logo from "@/components/logo"
@@ -9,7 +9,7 @@ export default async function AppLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const cookieStore = await cookies()
+  // const cookieStore = await cookies()
 
   return (
     <div className="flex w-full flex-col bg-[#060B27]">
