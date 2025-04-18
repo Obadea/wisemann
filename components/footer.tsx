@@ -18,13 +18,13 @@ const Footer = () => {
         duration: 0.4,
         scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
       }}
-      className="mt-10 flex min-h-64 w-full flex-col bg-[url('/bg-footer.png')] bg-cover bg-center pb-8 text-white"
+      className="mt-10 flex min-h-64 w-full flex-col bg-[url('/bg-footer.png')] bg-cover bg-center px-4 pb-8 text-white"
     >
       <div className="mx-auto mt-14 w-full max-w-6xl overflow-hidden">
-        <div className="grid grid-cols-[0.6fr_1fr] gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.6fr_1fr]">
           <div className="space-y-8">
             <Logo />
-            <div className="flex flex-col gap-4 rounded-lg border bg-[#0E1330] p-7">
+            <div className="flex flex-col gap-4 rounded-lg border bg-[#0E1330] p-3.5 lg:p-7">
               <p className="my-2 text-xl font-semibold">Join our waitlist</p>
               <Input
                 placeholder="Enter your email"
@@ -34,8 +34,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex items-end justify-between gap-4">
-            <div></div>
+          <div className="flex items-start justify-between gap-4 lg:items-end">
+            <div className="hidden lg:block"></div>
 
             <div className="flex flex-col gap-2">
               <p className="m mb-3.5 text-lg">Legal</p>
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
         <Separator className="my-10" />
-        <div className="flex justify-between gap-4">
+        <div className="flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start lg:justify-between">
           <p className="text-sm text-[#8F9BB7]">Copyright © Wisemann | 2025</p>
 
           <div className="flex gap-3.5">

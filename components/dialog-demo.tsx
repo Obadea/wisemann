@@ -1,3 +1,8 @@
+"use client"
+
+import { useState } from "react"
+import { Menu } from "lucide-react"
+
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -12,46 +17,56 @@ import {
 import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
 
+import CustomButton from "./custom-button"
+
 export function DialogDemo() {
   return (
-    <div className="flex flex-col items-start gap-4 md:flex-row">
-      <DialogWithForm />
-      <DialogScrollableContent />
-      <DialogWithStickyFooter />
+    <div className="flex h-fit items-center justify-center gap-4">
+      <DialogWithForm className="hidden lg:flex" />
+      <DialogScrollableContent className="flex lg:hidden" />
+      {/* <DialogWithStickyFooter /> */}
     </div>
   )
 }
 
-function DialogWithForm() {
+function DialogWithForm({ className }: { className?: string }) {
   return (
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
+          <CustomButton
+            text="Join Waitlist"
+            className={`h-9 min-w-[110] text-sm lg:h-12 lg:text-base ${className}`}
+          />
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="bg-[#0E1330] sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Join Waitlist</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Be the first to know when we launch. Get early access and
+              exclusive updates.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4">
             <div className="grid gap-3">
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Label htmlFor="email-1">Email</Label>
+              <Input
+                id="email-1"
+                name="email"
+                placeholder="example@gmail.oom"
+              />
             </div>
           </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Save changes</Button>
+            <Button
+              type="submit"
+              className="bg-[#7214FF] text-white hover:bg-[#7214ff]/80"
+            >
+              Submit
+            </Button>
           </DialogFooter>
         </DialogContent>
       </form>
@@ -59,11 +74,15 @@ function DialogWithForm() {
   )
 }
 
-function DialogScrollableContent() {
+function DialogScrollableContent({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Scrollable Content</Button>
+    <Dialog onOpenChange={setOpen}>
+      <DialogTrigger asChild className="flex items-center justify-center">
+        <Button variant="outline" className={` ${className}`}>
+          <Menu />
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

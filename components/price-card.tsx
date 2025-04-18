@@ -13,6 +13,7 @@ interface PriceCardProps {
   priceDescription?: string
   btnText: string
   pricingFeatures: any[]
+  className?: string
 }
 
 const PriceCard = ({
@@ -22,9 +23,12 @@ const PriceCard = ({
   priceDescription = "Built for the community.",
   btnText = "Coming soon",
   pricingFeatures,
+  className,
 }: PriceCardProps) => {
   return (
-    <div className="flex min-h-20 w-full min-w-60 flex-col gap-2 rounded-md border bg-[#0E1330] px-6 py-7">
+    <div
+      className={`flex min-h-20 w-full min-w-60 flex-col gap-2 rounded-md border bg-[#0E1330] px-6 py-7 ${className}`}
+    >
       <p className="text-sm text-[#8F9BB7] capitalize">{type}</p>
       <p className="text-2xl font-medium">
         {formatToNaira(price)}
@@ -41,7 +45,7 @@ const PriceCard = ({
           {pricingFeatures?.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2">
               <CheckIcon className="size-5 text-green-500" />
-              <p className="text-[#8F9BB7]">{item}</p>
+              <p className="text-xs text-[#8F9BB7] lg:text-base">{item}</p>
             </div>
           ))}
         </div>

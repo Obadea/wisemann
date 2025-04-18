@@ -52,7 +52,7 @@ const faqs2 = [
 
 export default function AccordionDemo() {
   return (
-    <div className="grid max-w-5xl grid-cols-2 gap-4">
+    <div className="grid max-w-5xl grid-cols-1 gap-4 lg:grid-cols-2">
       <Accordion
         type="single"
         collapsible

@@ -20,3 +20,8 @@ export function formatToNaira(amount: number): string {
     })
   )
 }
+
+export const handleScroll = (divId: string) => {
+  const target = document.getElementById(divId)
+  target?.scrollIntoView({ behavior: "smooth" })
+}

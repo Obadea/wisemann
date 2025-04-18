@@ -5,6 +5,7 @@ import Image from "next/image"
 import { animate, stagger } from "motion"
 import * as motion from "motion/react-client"
 
+import { handleScroll } from "@/lib/utils"
 import AccordionDemo from "@/components/accordion-demo"
 import CustomButton from "@/components/custom-button"
 import FeatureCard from "@/components/features-card"
@@ -111,28 +112,34 @@ export default function SinkPage() {
   }, [])
   return (
     <div className="mx-auto h-full w-full max-w-[1400px] gap-4 overflow-x-hidden bg-[#060B27] p-4 text-white">
-      <div className="absolute top-[110px] -left-[270px] z-[2] h-[600px] w-[600px] rounded-full bg-radial from-[#7214ff38] via-[#060B27]/0 to-[#060B27]"></div>
+      <div className="absolute top-[110px] -left-[270px] z-[0] h-[300px] w-[300px] rounded-full bg-radial from-[#7214ff38] via-[#060B27]/0 to-[#060B27] lg:h-[600px] lg:w-[600px]"></div>
 
-      <div className="absolute top-[240px] -right-[400px] -z-[0] h-[800px] w-[800px] overflow-hidden rounded-full bg-radial from-[#32CAFD]/25 via-[#060B27]/0 to-[#060B27]"></div>
+      <div className="absolute top-[240px] -right-[400px] -z-[0] h-[300px] w-[300px] overflow-hidden rounded-full bg-radial from-[#32CAFD]/25 via-[#060B27]/0 to-[#060B27] lg:h-[800px] lg:w-[800px]"></div>
 
       <div
         className="invisible flex flex-col items-center gap-10 pt-9"
         ref={containerRef}
+        id="home"
       >
-        <h1 className="z-[3] bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-center text-5xl font-bold text-transparent">
+        <h1 className="z-[3] bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text text-center text-[30px] font-bold text-transparent lg:pb-1.5 lg:text-5xl">
           A property management dashboard for landlords
         </h1>
-        <p className="mx-auto max-w-4xl text-center text-[#8F9BB7]">
+        <p className="mx-auto max-w-4xl text-center text-sm text-[#8F9BB7] lg:text-base">
           Wisemann is the AI-powered, all-in-one real estate OS designed for
           those who own, manage, and scale property portfolios. Lorem ipsum
           dolor sit amet, consectetur adipisicing elit. Et illum repellendus
           quod doloribus quis optio, nobis
         </p>
         <div className="flex w-full items-center justify-center gap-4">
-          <CustomButton text="Join Waitlist" />
+          <CustomButton
+            onClick={() => handleScroll("waitlist")}
+            text="Join Waitlist"
+            className="z-10"
+          />
           <CustomButton
             text="View pricing"
-            className="border bg-white/5 hover:bg-white/20"
+            className="z-10 border bg-white/5 hover:bg-white/20"
+            onClick={() => handleScroll("pricing")}
           />
         </div>
 
@@ -148,8 +155,11 @@ export default function SinkPage() {
         </div>
       </div>
 
-      <section className="mx-auto flex max-w-5xl flex-col items-center gap-10 pt-24 pb-16">
-        <div className="grid grid-cols-[1.5fr_1fr] items-center justify-center gap-4">
+      <section
+        id="features"
+        className="mx-auto flex max-w-5xl flex-col items-center gap-10 pt-24 pb-16"
+      >
+        <div className="grid grid-cols-1 items-center justify-center gap-4 lg:grid-cols-[1.5fr_1fr]">
           <motion.h1
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -157,7 +167,7 @@ export default function SinkPage() {
               duration: 0.4,
               scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
             }}
-            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-3xl font-bold text-transparent"
+            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-center text-2xl font-bold text-transparent lg:text-start lg:text-3xl"
           >
             Powerful features to help you streamline your real estate operations
           </motion.h1>
@@ -169,7 +179,7 @@ export default function SinkPage() {
               delay: 0.2,
               scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
             }}
-            className="place-self-end text-sm text-[#8F9BB7]"
+            className="place-self-end text-center text-sm text-[#8F9BB7] lg:text-start"
           >
             Wisemann is the AI-powered, all-in-one real estate OS designed for
             Everything you need to streamline your real estate operations, all
@@ -177,7 +187,7 @@ export default function SinkPage() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
           {features.map((feature, index) => (
             <FeatureCard
               description={feature.description}
@@ -191,6 +201,7 @@ export default function SinkPage() {
       </section>
 
       {/* Join Waitlist section */}
+      <div id="waitlist" />
       <motion.section
         className="flex flex-col items-center justify-center py-16"
         initial={{ opacity: 0, scale: 0 }}
@@ -212,6 +223,7 @@ export default function SinkPage() {
         </div>
       </motion.section>
 
+      <div id="pricing" />
       <motion.section
         className="flex flex-col items-center justify-center gap-12 py-16"
         initial={{ opacity: 0, scale: 0 }}
@@ -230,12 +242,12 @@ export default function SinkPage() {
               duration: 0.4,
               scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
             }}
-            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-3xl font-bold text-transparent"
+            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-2xl font-bold text-transparent lg:text-3xl"
           >
             Choose the ideal plan
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.4,
@@ -252,7 +264,7 @@ export default function SinkPage() {
 
         {/* Price  section  */}
 
-        <div className="grid grid-cols-3 gap-6 lg:w-6xl">
+        <div className="grid w-full grid-cols-1 gap-6 md:scale-90 lg:w-6xl lg:scale-100 lg:grid-cols-3">
           <PriceCard
             type="open source"
             price={0}
@@ -277,6 +289,7 @@ export default function SinkPage() {
         </div>
       </motion.section>
 
+      <div id="faq" />
       <motion.section
         className="flex flex-col items-center justify-center gap-12 py-16"
         initial={{ opacity: 0, scale: 0 }}
@@ -295,7 +308,7 @@ export default function SinkPage() {
               duration: 0.4,
               scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
             }}
-            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-3xl font-bold text-transparent"
+            className="bg-gradient-to-b from-[#F6F6F7] to-[#7E808F] bg-clip-text pb-1.5 text-2xl font-bold text-transparent lg:text-3xl"
           >
             Frequently Asked Questions
           </motion.h1>
