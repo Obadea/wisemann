@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Menu } from "lucide-react"
+import Link from "next/link"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -16,12 +17,13 @@ import {
 } from "@/registry/new-york-v4/ui/dialog"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 import CustomButton from "./custom-button"
 
 export function DialogDemo() {
   return (
-    <div className="flex h-fit items-center justify-center gap-4">
+    <div className="z-40 flex h-fit items-center justify-center gap-4">
       <DialogWithForm className="hidden lg:flex" />
       <DialogScrollableContent className="flex lg:hidden" />
       {/* <DialogWithStickyFooter /> */}
@@ -81,29 +83,21 @@ function DialogScrollableContent({ className }: { className?: string }) {
     <Dialog onOpenChange={setOpen}>
       <DialogTrigger asChild className="flex items-center justify-center">
         <Button variant="outline" className={` ${className}`}>
-          <Menu />
+          {open ? <X /> : <Menu />}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="bg-[#0E1330] sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Scrollable Content</DialogTitle>
-          <DialogDescription>
+          <DialogTitle>Menu</DialogTitle>
+          {/* <DialogDescription>
             This is a dialog with scrollable content.
-          </DialogDescription>
+          </DialogDescription> */}
         </DialogHeader>
-        <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-          <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
-          {Array.from({ length: 10 }).map((_, index) => (
-            <p key={index} className="mb-4 leading-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          ))}
+        <div className="-mx-6 flex max-h-[500px] flex-col gap-5 overflow-y-auto px-6 text-sm">
+          <Link href="/">Home</Link>
+          <Separator />
+          <Link href="/">About</Link>
+          <Separator />
         </div>
       </DialogContent>
     </Dialog>
@@ -125,15 +119,9 @@ function DialogWithStickyFooter() {
         </DialogHeader>
         <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
           <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
-          {Array.from({ length: 10 }).map((_, index) => (
+          {Array.from({ length: 1 }).map((_, index) => (
             <p key={index} className="mb-4 leading-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
             </p>
           ))}
         </div>
