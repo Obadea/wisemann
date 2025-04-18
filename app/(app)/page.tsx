@@ -226,7 +226,7 @@ export default function SinkPage() {
       <div id="pricing" />
       <motion.section
         className="flex flex-col items-center justify-center gap-12 py-16"
-        initial={{ opacity: 0, scale: 0 }}
+        initial={{ opacity: 0, scale: 0.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.4,
@@ -247,7 +247,7 @@ export default function SinkPage() {
             Choose the ideal plan
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 0.4,

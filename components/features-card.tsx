@@ -25,7 +25,7 @@ const FeatureCard = ({
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.4,
-          delay: 0.1 + number * 0.2,
+          delay: 0.1 + number * 0.1,
           scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
         }}
         className="flex flex-col gap-4 rounded-lg border bg-[#0E1330] py-5 pr-6 pl-5"
